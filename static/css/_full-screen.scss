@@ -1,0 +1,69 @@
+.full-screen {
+    position: relative;
+    width: calc(100% + 2px);
+    height: 100vh;
+    left: 50%;
+    transform: translateX(calc(-50% - 1px));
+
+    mask: linear-gradient(black calc(100% - 99px), transparent calc(100% - 99px)), url('/static/images/ragged-bottom-mask.png') luminance repeat-x bottom;
+    -webkit-mask: linear-gradient(black calc(100% - 99px), transparent calc(100% - 99px)), url('/static/images/ragged-bottom-mask.png') luminance repeat-x bottom;
+
+    mask-border-repeat: stretch;
+    mask-position: bottom;
+
+    overflow-x: hidden;
+
+
+    background-repeat: repeat-y;
+    background-size: 160%;
+    background-position: center;
+
+    background-position-y: -10px;
+
+    @media screen and (max-width: 1200px) {
+        background-size: 200%;
+    }
+
+
+    &__container {
+        padding: 9% 17%;
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        height: 100%;
+    }
+
+    &__content {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: left;
+        align-items: start;
+        gap: 10px;
+
+        margin-left: 2rem;
+        width: 55%;
+
+
+        h2 {
+            font-size: 2.7rem;
+            font-family: "Noto Sans", sans-serif;
+            color: var(--text-color);
+            font-weight: bold;
+
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 1.5rem;
+            font-family: "Noto Sans", sans-serif;
+            color: var(--text-color);
+
+            line-height: 2rem;
+        }
+
+    }
+
+
+    &--move-up {
+        top: -1.5rem;
+    }
+}

@@ -1,0 +1,94 @@
+.content-section {
+    @media screen and (max-width: 1000px) {
+        flex-flow: row nowrap;
+        //width: 100%;
+
+        margin: 0 auto 40px;
+    }
+
+    @media screen and (max-width: 660px) {
+        flex-flow: column nowrap;
+
+        img {
+            height: auto !important;
+            width: 80vw !important;
+
+        }
+
+        &--in-container &__image {
+            height: auto;
+            width: 80vw;
+        }
+    }
+
+
+    max-width: 90%;
+    margin: 0 10% 40px;
+
+    display: flex;
+    // На первой строчки две ячейки, на второй - одна большая
+    //grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: start;
+    gap: 5em;
+
+
+    &__title {
+        margin-bottom: 20px;
+        font-size: 2em;
+        font-weight: bold;
+        font-family: Minecraft, sans-serif;
+        color: var(--theme-color);
+        // расстояние между словами в заголовке
+        word-spacing: 0.5rem;
+        letter-spacing: 0.05rem;
+    }
+
+    &__text {
+        color: var(--text-color);
+        align-self: start;
+        margin-top: 2em;
+
+        p {
+            font-size: 1.5em;
+
+            line-height: 1.4em;
+            font-family: "Noto Sans", sans-serif;
+            // отступ между абзацами
+            margin-bottom: 1rem;
+        }
+    }
+
+    &__image {
+        width: auto;
+        height: 30em;
+        aspect-ratio: 3/4;
+        object-fit: cover;
+        // pixelated
+        image-rendering: pixelated;
+        align-self: center;
+        //margin-right: 10%;
+        //grid-column: revert;
+
+        mask: url("/static/images/mask34.png") luminance no-repeat center;
+        -webkit-mask: url("/static/images/mask34.png") luminance no-repeat center;
+
+        mask-size: cover;
+        -webkit-mask-size: cover;
+
+    }
+
+    &--in-container {
+        width: 100%;
+
+        margin: 0 auto 40px;
+
+        gap: 3em;
+    }
+
+
+    &--in-container &__image {
+        height: 33em;
+    }
+
+}

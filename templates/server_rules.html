@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Правила сервера {{ server_title }}{% endblock %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+    <article class="rules">
+        <h1>{{ title }}</h1>
+        {% for section, content in document.items() %}
+            {#<h2>{{ section }}</h2>#}
+
+            <ol>{% for subsection, details in content.items() %}
+                <li>
+                    {% if details is iterable and details is mapping %}
+                        <h2>{{ subsection }}</h2>
+                        <ol>
+                            {% for subsubsection, subdetails in details.items() %}
+                                <li>{{ subsubsection }}
+                                    <ol>
+                                        {% for item in subdetails %}
+                                            <li>{{ item }}</li>
+                                        {% endfor %}
+                                    </ol>
+                                </li>
+                            {% endfor %}
+                        </ol>
+                    {% else %}
+                        <h2>{{ subsection }}</h2>
+                        <ol>
+                            {% for item in details %}
+                                <li>{{ item }}</li>
+                            {% endfor %}
+                        </ol>
+                    {% endif %}
+                </li>
+            {% endfor %}
+            </ol>
+        {% endfor %}
+    </article>
+{% endblock %}

@@ -1,0 +1,32 @@
+@import "zeroing";
+@import "variables";
+@import "header";
+@import "footer";
+@import "button";
+@import "full-screen";
+@import "content-section";
+@import "content-section-container";
+@import "rules";
+
+body {
+    background-color: var(--bg-color);
+
+    scroll-behavior: smooth;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+
+    @media screen and (max-width: 800px) {
+        overflow-x: hidden;
+        font-size: .8em;
+    }
+
+    @media print {
+        > *:not(main) {
+            display: none !important;
+        }
+    }
+}
+
+

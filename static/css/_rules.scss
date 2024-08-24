@@ -1,0 +1,70 @@
+.rules {
+    color: var(--text-color);
+    font-family: "Noto Sans", sans-serif;
+    padding: .5em;
+    padding-top: 0;
+    padding-left: 3em;
+
+    font-size: 1.3em;
+
+    --h2-font-size: 1.1em;
+
+
+    // Отображение цифры
+    h1 {
+        font-family: Minecraft, sans-serif;
+        color: var(--theme-color);
+        font-size: 1.5em;
+        font-weight: 600;
+        word-spacing: 0.5rem;
+        letter-spacing: 0.05rem;
+
+        margin-bottom: .3em;
+    }
+
+    h2 {
+        display: inline;
+
+        font-family: Minecraft, sans-serif;
+        color: var(--text-color);
+        font-size: var(--h2-font-size);
+        font-weight: 600;
+        word-spacing: 0.5rem;
+        letter-spacing: 0.05rem;
+    }
+
+    ol {
+
+        list-style-type: none;
+        counter-reset: li;
+
+        padding-left: .6em;
+        border-left: 4px solid var(--text-color);
+        margin-left: 1em;
+    }
+
+    li {
+        margin-bottom: .75em;
+        line-height: 1.5em;
+    }
+
+    li:last-child {
+        margin-bottom: 0;
+    }
+
+    li:first-child {
+        padding-top: .5em;
+    }
+
+    li:before {
+        counter-increment: li;
+        content: counters(li, ".") ". ";
+    }
+
+    li:has(h2)::before {
+        font-family: Minecraft, sans-serif;
+        color: var(--text-color);
+        font-size: var(--h2-font-size);
+
+    }
+}

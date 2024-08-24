@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Сервера{% endblock %}
+
+{% block head %}
+    {#    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">#}
+{% endblock %}
+
+{% block content %}
+
+    <section class="content-section-container">
+        <h2 class="content-section-container__title content-section-container__title--no-top-padding">Сервера
+            FreshCraft</h2>
+
+        <div class="content-section-container__server-box">
+            <canvas class="mascot"></canvas>
+            <script type="module" src="/static/js/flutter.js"></script>
+
+            <div class="content-section-container__server-box-article">
+                <h3 class="content-section-container__server-box-title content-section-container__server-box-title--padding-right">
+                    FreshCraft Revived</h3>
+                <p class="content-section-container__server-box-description">Приватный сервер #1</p>
+                <hr>
+                <p class="content-section-container__server-box-text">Сервер с лучшими модами. Уникальное сочетание упрощённого Роле-плей и Анархии. Особенное комьюнити,
+                    необычная и чарующая атмосфера, отсутствие лишнего, доната и привата. Это не просто сервер, это
+                    новый взгляд на игру! Вместо авто-ферм, занимайтесь добыванием ресурсов, лутайте данжи и отбивайтесь
+                    от мобов!</p>
+                <p class="content-section-container__server-box-text">Самая актуальная версия игры!</p>
+                <p class="content-section-container__server-box-text">Более 200 модов!</p>
+
+                <button class="button button--top-right" onclick="location.href='/servers/revived'">Подробнее</button>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

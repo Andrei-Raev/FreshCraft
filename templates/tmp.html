@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FRESHCRAFT | Главная</title>
+
+    <!-- Scripts -->
+    <script async src="https://code.jquery.com/jquery-3.6.4.min.js" crossorigin="anonymous"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="modulepreload" href="https://freshcraft.org/build/assets/app-a5991337.js"/>
+    <script type="module" src="https://freshcraft.org/build/assets/app-a5991337.js"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="preload" as="style" href="https://freshcraft.org/build/assets/app-024c9fa9.css"/>
+    <link rel="stylesheet" href="https://freshcraft.org/build/assets/app-024c9fa9.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <style>
+        * {
+            font-family: 'Noto Sans', serif;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header x-data="{ isOpen: false }" class="fixed z-30 top-0 w-screen px-4 xl:px-10 py-4 flex flex-col xl:flex-row bg-dark-bg text-white justify-center items-center drop-shadow-md">
+        <a href="https://freshcraft.org" class="absolute max-w-[200px] xl:max-w-[300px] py-3 flex justify-center items-center">
+            <img src="https://freshcraft.org/assets/images/logos/minecraft_fresh.png" alt="Freshcraft" class="h-full">
+        </a>
+        <div class="flex xl:hidden justify-end w-full">
+            <div id="burger_menu" @click="isOpen = !isOpen">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12">
+                    <path fill-rule="evenodd" d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z" clip-rule="evenodd"/>
+                </svg>
+            </div>
+        </div>
+        <div id="fixed_menu" x-show="isOpen" x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-300 transform" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90" class=" z-[-100] w-screen fixed top-[80px] right-0 bg-dark-bg  flex justify-center items-start p-4 transition-all">
+            <div class="flex flex-col justify-center items-center space-y-4 w-full">
+                <a href="https://freshcraft.org/contacts" class="bg-main-purple text-white text-center font-bold py-2 px-4 border-b-8 hover:border-b-4 hover:mt-[4px] active:hover:border-b active:hover:mt-[1px] border-dark-purple uppercase">Контакты</a>
+                <a href="https://freshcraft.org/servers" class="bg-main-purple text-white text-center font-bold py-2 px-4 border-b-8 hover:border-b-4 hover:mt-[4px] active:hover:border-b active:hover:mt-[1px] border-dark-purple uppercase">Сервера</a>
+                <a href="https://freshcraft.org/dlc" class="bg-main-purple text-white text-center font-bold py-2 px-4 border-b-8 hover:border-b-4 hover:mt-[4px] active:hover:border-b active:hover:mt-[1px] border-dark-purple uppercase">Дополнения</a>
+            </div>
+        </div>
+        <div class="hidden xl:flex flex-col lg:flex-row justify-between w-full ">
+            <div class="flex justify-center items-center space-x-5 text-base font-semibold uppercase">
+                <a href="https://freshcraft.org/contacts">Контакты</a>
+                <a href="https://freshcraft.org/servers">Сервера</a>
+                <a href="https://freshcraft.org/dlc">Дополнения</a>
+            </div>
+            <div class="flex justify-center items-center space-x-5">
+                <a href="https://freshcraft.org/play" class="stylized-button">
+                    Получить Freshcraft
+                </a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="relative h-max items-end">
+            <div class="slide_image absolute w-full h-full z-[-2] brightness-50 bg-black">
+                <div style="background-image: url('https://freshcraft.org/assets/images/posters/poster (21).webp'); opacity: 1" class="w-full h-full bg-center bg-cover absolute show"></div>
+                <div style="background-image: url('https://freshcraft.org/assets/images/posters/poster (1).webp'); opacity: 0" class="w-full h-full bg-center bg-cover absolute"></div>
+                <div style="background-image: url('https://freshcraft.org/assets/images/posters/poster (2).webp'); opacity: 0" class="w-full h-full bg-center bg-cover absolute"></div>
+                <div style="background-image: url('https://freshcraft.org/assets/images/posters/poster (5).webp'); opacity: 0" class="w-full h-full bg-center bg-cover absolute"></div>
+                <div style="background-image: url('https://freshcraft.org/assets/images/posters/poster (6).webp'); opacity: 0" class="w-full h-full bg-center bg-cover absolute"></div>
+                <div style="background-image: url('https://freshcraft.org/assets/images/posters/poster (9).webp'); opacity: 0" class="w-full h-full bg-center bg-cover absolute"></div>
+                <div style="background-image: url('https://freshcraft.org/assets/images/posters/poster (14).webp'); opacity: 0" class="w-full h-full bg-center bg-cover absolute"></div>
+                <div style="background-image: url('https://freshcraft.org/assets/images/posters/poster (20).webp'); opacity: 0" class="w-full h-full bg-center bg-cover absolute"></div>
+                <div style="background-image: url('https://freshcraft.org/assets/images/posters/poster (18).webp'); opacity: 0" class="w-full h-full bg-center bg-cover absolute"></div>
+                <div style="background-image: url('https://freshcraft.org/assets/images/posters/poster (30).webp'); opacity: 0" class="w-full h-full bg-center bg-cover absolute"></div>
+            </div>
+
+            <div class="max-w-[950px] mx-auto py-24 text-white">
+                <div class="lg:max-w-[50%] mx-auto text-center lg:mx-0 lg:text-left">
+                    <h1 class="text-4xl font-bold">
+                        ДОБРО ПОЖАЛОВАТЬ НА ОФИЦИАЛЬНЫЙ САЙТ FRESHCRAFT
+                    </h1>
+                    <p class="text-lg font-normal mb-[40px]">
+                        Уникальный проект, новое слово в тематике модпаков майнкрафт — раскрой потенциал великой игры
+                        с проектом FreshCraft.<br>
+                        Освежи впечатление от выживания и получи незабываемые ощущения от игрового процесса!
+                    </p>
+                    <a class="w-fit inline-block" href="https://freshcraft.org/play">
+                        <p class="stylized-button text-2xl">
+                            ИГРАТЬ!
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="h-24 w-full" style="background-image: url('https://freshcraft.org/assets/images/ui-icons/trans-bottom.png')"></div>
+        </section>
+
+        ...
+
+    </main>
+    <footer class="xl:pt-8 pt-4 bg-black text-white flex flex-col justify-center xl:items-center overflow-hidden">
+        <div class="flex flex-col xl:flex-row justify-between xl:items-center mb-2 w-fit ml-10 xl:ml-0 xl:space-x-24">
+            <div class="flex flex-col mb-4 xl:mb-0">
+                <div class="flex flex-col text-left items-start">
+                    <h1 class="min-h-min font-semibold text-2xl text-my-dark-grey mr-2">FRESHCRAFT</h1>
+                </div>
+                <span class="text-my-grey font-normal text-left my-5">
+                    Гусев Артемий Витальевич <br>
+                    jackplay285@gmail.com
+                </span>
+            </div>
+            <div class="flex flex-col text-main-purple">
+                <div class="flex flex-col mb-4">
+                    <h1 class="text-lg font-medium text-my-dark-grey mb-2">
+                        Дополнения
+                    </h1>
+                    <a href="https://freshcraft.org/dlc" class="text-base font-normal text-my-grey mb-1">
+                        Все дополнения
+                    </a>
+                    <a href="https://freshcraft.org/dlc/fantasy" class="text-base font-normal text-my-grey mb-1">
+                        Fantasy - DLC
+                    </a>
+                    <a href="https://freshcraft.org/dlc/industrial" class="text-base font-normal text-my-grey mb-1">
+                        Industrial - DLC
+                    </a>
+                </div>
+            </div>
+            <div class="flex flex-col text-main-purple">
+                <div class="flex flex-col mb-4">
+                    <h1 class="text-lg font-medium text-my-dark-grey mb-2">
+                        Сервера
+                    </h1>
+                    <a href="https://freshcraft.org/servers" class="text-base font-normal text-my-grey mb-1">
+                        Все сервера
+                    </a>
+                    <a href="https://freshcraft.org/servers/revived" class="text-base font-normal text-my-grey mb-1">
+                        FreshCraft - Revived
+                    </a>
+                </div>
+            </div>
+            <div class="flex flex-col text-main-purple">
+                <div class="flex flex-col mb-4">
+                    <h1 class="text-lg font-medium text-my-dark-grey mb-2">
+                        Покупки
+                    </h1>
+                    <a href="https://boosty.to/grapecreate" target="_blank" class="text-base font-normal text-my-grey mb-1">
+                        Boosty!
+                    </a>
+                </div>
+            </div>
+        </div>
+        <p class="text-gray-600 text-center text-sm mb-2">
+            Copyright © FreshCraft 2020-2024. Все права защищены.
+            <br>
+            © Mojang, 2024. Товарный знак "Minecraft" принадлежит компании Mojang Synergies AB
+            <br>
+            Вся размещенная информация на сайте не является публичной офертой. Мы никоим образом не связаны с Mojang, AB.
+            <br>
+            All information posted on the site is not a public offer. We are in no way affiliated with Mojang, AB.
+        </p>
+        <hr class=" w-full border-t-1 border-my-dark-grey">
+        <div class="flex justify-center items-center space-x-2">
+            <p>Site by</p>
+            <a href="https://pheo.dev" target="_blank" class="bg-white p-1 m-3 rounded-lg">
+                <h1 is="type-async" id="type-text" class="text-black font-bold">PHEO.DEV</h1>
+            </a>
+            <p>in 2023</p>
+        </div>
+    </footer>
+</body>
+</html>

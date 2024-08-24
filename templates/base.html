@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title>FRESHCRAFT | {% block title %}Главная{% endblock %}</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <script type="module" src="/static/js/tree_js/three.module.min.js"></script>
+    <script type="module" src="/static/js/tree_js/GLTFLoader.js"></script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () {
+                (m[i].a = m[i].a || []).push(arguments)
+            };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) {
+                if (document.scripts[j].src === r) {
+                    return;
+                }
+            }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(97185032, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true
+        });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/97185032" style="position:absolute; left:-9999px;" alt=""/></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
+
+    <!-- Custom head -->
+    {% block head %}{% endblock %}
+</head>
+<body>
+<header class="header">
+    <div class="header__overlay">
+        <nav class="header__nav">
+            <ul class="header__nav-list">
+                <li class="header__nav-list-item" onclick="location.href='/servers'">Сервера</li>
+                <li class="header__nav-list-item">Дополнения</li>
+                <li class="header__nav-list-item">Контакты</li>
+            </ul>
+        </nav>
+
+        <a href="/" class="header__logo">
+            <img class="header__logo-img" src="{{ url_for('static', filename='images/minecraft_fresh.png') }}"
+                 alt="Логотип Freshcraft">
+        </a>
+
+        <button class="header__get-freshcraft button">Получить Freshcraft</button>
+    </div>
+    <div class="header__bottom"></div>
+</header>
+
+<main>{% block content %}{% endblock %}</main>
+
+<footer class="footer">
+
+    <section class="footer__links">
+        <div>
+            <h2>FRESHCRAFT</h2>
+            <p>Гусев&nbsp;Артемий&nbsp;Витальевич</p>
+            <a class="footer__links--no-color" href="mailto:jackplay285@gmail">jackplay285@gmail.com</a>
+        </div>
+
+        <div>
+            <h2>Дополнения</h2>
+            <a href="#">Все&nbsp;дополнения</a>
+            <a href="#">Fantasy&nbsp;-&nbsp;DLC</a>
+            <a href="#">Industrial&nbsp;-&nbsp;DLC</a>
+        </div>
+
+        <div>
+            <h2>Сервера</h2>
+            <a href="#">Все&nbsp;сервера</a>
+            <a href="#">FreshCraft&nbsp;-&nbsp;Revived</a>
+        </div>
+
+        <div class="footer__canvas">
+            <canvas class="test"></canvas>
+            <script type="module" src="/static/js/test.js"></script>
+        </div>
+    </section>
+    <hr>
+    <section class="footer__copyright">
+        <p>Copyright &copy; FreshCraft 2020-2024. Все права защищены.</p>
+        <p>&copy; Mojang, 2024. Товарный знак "Minecraft" принадлежит компании Mojang Synergies AB</p>
+        <p>Вся размещенная информация на сайте не является публичной офертой. Мы никоим образом не связаны с Mojang,
+            AB.</p>
+        <p>All information posted on the site is not a public offer. We are in no way affiliated with Mojang, AB.</p>
+    </section>
+</footer>
+</body>
+</html>

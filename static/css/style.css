@@ -1,0 +1,704 @@
+@charset "UTF-8";
+/*Обнуление*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
+
+/*--------------------*/
+:root {
+  --bg-color: #111111;
+  --theme-color: #9A4DFF;
+  --shadow-color: #2B1D3B;
+  --text-color: #FFFFFF;
+  --copyright-color: rgb(75 85 99 / 1);
+  --link-color: var(--theme-color);
+  --button-color: var(--theme-color);
+  --button-text-color: var(--text-color);
+  --button-border-color: #432959;
+}
+@media print {
+  :root {
+    --bg-color: white;
+    --text-color: black;
+  }
+}
+@font-face {
+  font-family: "Agat";
+  src: url("/static/fonts/agat-8.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Over";
+  src: url("/static/fonts/Font Over.otf") format("opentype");
+}
+@font-face {
+  font-family: "Noto Sans";
+  src: url("/static/fonts/NotoSans-VariableFont_wdth,wght.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Minecraft";
+  src: url("/static/fonts/Minecraft Seven_2.ttf") format("truetype");
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+@media print {
+  .header {
+    display: block;
+    position: static;
+  }
+  .header * {
+    padding: 0;
+    margin: 0;
+  }
+}
+@media print {
+  .header button {
+    display: none;
+  }
+}
+.header__overlay {
+  width: 100%;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+  height: 5.5rem;
+  padding-top: 0.5rem;
+  position: relative;
+  top: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+.header__logo {
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+}
+@media print {
+  .header__logo {
+    position: relative;
+    left: 1cm;
+    transform: none;
+  }
+}
+.header__logo-img {
+  height: 5rem;
+}
+@media print {
+  .header__logo-img {
+    height: 3.5rem;
+  }
+}
+.header__bottom {
+  content: "";
+  min-height: 2rem;
+  background-image: url("/static/images/ragged-header-mask.png");
+  background-repeat: repeat-x;
+  pointer-events: none;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  background-size: 150rem;
+  background-position: top;
+}
+@media print {
+  .header__bottom {
+    display: none;
+  }
+}
+.header__get-freshcraft {
+  margin-right: 1.5rem;
+}
+.header__nav {
+  font-family: "Noto Sans", serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+  top: 0rem;
+  padding-left: 2rem;
+}
+@media print {
+  .header__nav {
+    display: none;
+  }
+}
+.header__nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+.header__nav ul li {
+  margin-left: 1.5rem;
+  position: relative;
+  cursor: pointer;
+}
+.header__nav ul li:first-child {
+  margin-left: 0;
+}
+.header__nav ul li:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px; /* Толщина подчеркивания */
+  bottom: -2px; /* Положение подчеркивания */
+  left: 0;
+  background-color: var(--theme-color); /* Цвет подчеркивания */
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+.header__nav ul li:hover:after {
+  visibility: visible;
+  transform: scaleX(1.1);
+}
+
+.footer {
+  font-family: "Noto Sans", serif;
+  font-weight: normal;
+  font-size: 1.2rem;
+  position: relative;
+  width: 100%;
+  left: 50%;
+  transform: translateX(calc(-50% - 1px));
+  padding: 0 10%;
+  padding-bottom: 10px;
+  color: var(--text-color);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+@media screen and (max-width: 1050px) {
+  .footer .footer__links {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1rem;
+    row-gap: 1rem;
+    width: auto;
+    align-self: center;
+  }
+  .footer .footer__canvas {
+    justify-self: center;
+    display: block;
+  }
+}
+@media screen and (max-width: 650px) {
+  .footer .footer__links {
+    grid-template-columns: 1fr;
+  }
+  .footer .footer__links div h2 {
+    margin-top: 1em;
+  }
+  .footer .footer__links div:first-child h2 {
+    margin-top: 0;
+  }
+  .footer .footer__canvas {
+    display: none;
+  }
+}
+.footer hr {
+  border: 0;
+  height: 1px;
+  background-color: var(--copyright-color);
+  width: 120%;
+}
+.footer__copyright {
+  font-family: "Noto Sans", serif;
+  font-weight: normal;
+  color: var(--copyright-color);
+  align-self: center;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-top: 0.5em;
+}
+.footer__links {
+  margin: 20px 10% 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-width: fit-content;
+  column-gap: 5vw;
+  align-content: center;
+  margin-bottom: 1rem;
+}
+.footer__links div {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+  align-items: start;
+  gap: 1.2rem;
+}
+.footer__links div a {
+  display: block;
+  color: var(--theme-color);
+}
+.footer__links div a.footer__links--no-color {
+  color: var(--text-color);
+}
+.footer__links div a.footer__links--no-color:hover {
+  text-decoration: underline dotted;
+  text-decoration-color: var(--theme-color);
+}
+.footer__links div h2 {
+  font-family: "Noto Sans", serif;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.5rem;
+}
+.footer__links div canvas {
+  width: 10vw;
+  height: 100%;
+}
+
+.button {
+  font-family: "Noto Sans", serif;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  background-color: var(--theme-color);
+  color: var(--text-color);
+  border-bottom: var(--button-border-color) 10px solid;
+  position: relative;
+  top: 0;
+  padding: 0.6rem 1.1rem;
+  cursor: pointer;
+  transition: all 0.05s linear;
+  margin-top: 0;
+}
+.button:hover {
+  border-bottom: var(--button-border-color) 5px solid;
+  top: 5px;
+}
+.button--big {
+  font-size: 2em;
+}
+.button--gap-before {
+  margin-top: 3rem;
+}
+.button--gap-before:hover {
+  margin-top: calc(3rem + 5px);
+}
+.button--gap-after {
+  margin-bottom: 3rem;
+}
+.button--top-right {
+  position: absolute;
+  top: 1.75rem;
+  right: 0.75rem;
+}
+.button--top-right:hover {
+  top: calc(1.75rem + 5px);
+}
+
+.full-screen {
+  position: relative;
+  width: calc(100% + 2px);
+  height: 100vh;
+  left: 50%;
+  transform: translateX(calc(-50% - 1px));
+  mask: linear-gradient(black calc(100% - 99px), transparent calc(100% - 99px)), url("/static/images/ragged-bottom-mask.png") luminance repeat-x bottom;
+  -webkit-mask: linear-gradient(black calc(100% - 99px), transparent calc(100% - 99px)), url("/static/images/ragged-bottom-mask.png") luminance repeat-x bottom;
+  mask-border-repeat: stretch;
+  mask-position: bottom;
+  overflow-x: hidden;
+  background-repeat: repeat-y;
+  background-size: 160%;
+  background-position: center;
+  background-position-y: -10px;
+}
+@media screen and (max-width: 1200px) {
+  .full-screen {
+    background-size: 200%;
+  }
+}
+.full-screen__container {
+  padding: 9% 17%;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+}
+.full-screen__content {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: left;
+  align-items: start;
+  gap: 10px;
+  margin-left: 2rem;
+  width: 55%;
+}
+.full-screen__content h2 {
+  font-size: 2.7rem;
+  font-family: "Noto Sans", sans-serif;
+  color: var(--text-color);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.full-screen__content p {
+  font-size: 1.5rem;
+  font-family: "Noto Sans", sans-serif;
+  color: var(--text-color);
+  line-height: 2rem;
+}
+.full-screen--move-up {
+  top: -1.5rem;
+}
+
+.content-section {
+  max-width: 90%;
+  margin: 0 10% 40px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: 5em;
+}
+@media screen and (max-width: 1000px) {
+  .content-section {
+    flex-flow: row nowrap;
+    margin: 0 auto 40px;
+  }
+}
+@media screen and (max-width: 660px) {
+  .content-section {
+    flex-flow: column nowrap;
+  }
+  .content-section img {
+    height: auto !important;
+    width: 80vw !important;
+  }
+  .content-section--in-container .content-section__image {
+    height: auto;
+    width: 80vw;
+  }
+}
+.content-section__title {
+  margin-bottom: 20px;
+  font-size: 2em;
+  font-weight: bold;
+  font-family: Minecraft, sans-serif;
+  color: var(--theme-color);
+  word-spacing: 0.5rem;
+  letter-spacing: 0.05rem;
+}
+.content-section__text {
+  color: var(--text-color);
+  align-self: start;
+  margin-top: 2em;
+}
+.content-section__text p {
+  font-size: 1.5em;
+  line-height: 1.4em;
+  font-family: "Noto Sans", sans-serif;
+  margin-bottom: 1rem;
+}
+.content-section__image {
+  width: auto;
+  height: 30em;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  image-rendering: pixelated;
+  align-self: center;
+  mask: url("/static/images/mask34.png") luminance no-repeat center;
+  -webkit-mask: url("/static/images/mask34.png") luminance no-repeat center;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+}
+.content-section--in-container {
+  width: 100%;
+  margin: 0 auto 40px;
+  gap: 3em;
+}
+.content-section--in-container .content-section__image {
+  height: 33em;
+}
+
+.content-section-container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2em;
+}
+.content-section-container__title {
+  margin-bottom: 2rem;
+  margin-top: 4rem;
+  font-size: 4rem;
+  font-weight: 600;
+  font-family: Minecraft, sans-serif;
+  color: var(--text-color);
+  word-spacing: 0.5rem;
+  letter-spacing: 0.05rem;
+}
+.content-section-container__title--no-top-padding {
+  margin-top: 0;
+}
+.content-section-container__content {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5rem;
+  font-size: 0.75em;
+  padding: 0 100px;
+}
+@media screen and (max-width: 1000px) {
+  .content-section-container__content {
+    flex-flow: row wrap;
+    font-size: 1em;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .content-section-container__content {
+    padding: 0;
+  }
+}
+.content-section-container__article {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  max-width: 70%;
+}
+.content-section-container__article div {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 1em;
+}
+.content-section-container__article :nth-child(even) {
+  flex-flow: row-reverse nowrap;
+}
+.content-section-container__article-text-container {
+  display: flex;
+  flex-flow: column nowrap !important;
+  justify-content: center;
+  align-items: start;
+  margin-left: 2em;
+}
+.content-section-container__article-image {
+  width: auto;
+  height: 20em;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  image-rendering: pixelated;
+  mask: url("/static/images/mask43.png") luminance no-repeat center;
+  -webkit-mask: url("/static/images/mask43.png") luminance no-repeat center;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+}
+.content-section-container__article-title {
+  font-size: 1.65em;
+  font-weight: 600;
+  font-family: Minecraft, sans-serif;
+  color: var(--theme-color);
+  word-spacing: 0.5rem;
+  letter-spacing: 0.05rem;
+  margin-bottom: 0.85em;
+}
+.content-section-container__article-text {
+  max-width: 600px;
+  font-size: 1.35em;
+  font-family: "Noto Sans", sans-serif;
+  color: var(--text-color);
+  line-height: 1.35em;
+  margin-bottom: 0.5em;
+}
+.content-section-container__server-box {
+  position: relative;
+  border: var(--theme-color) 4px solid;
+  padding: 1rem;
+  margin-top: 2em;
+  max-width: 70%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: start;
+  gap: 2em;
+}
+.content-section-container__server-box canvas {
+  width: 35%;
+  aspect-ratio: 1;
+  align-self: center;
+}
+.content-section-container__server-box-article hr {
+  margin-bottom: 0.5em;
+  background-color: var(--theme-color);
+  height: 3px;
+  margin-right: 12rem;
+}
+.content-section-container__server-box-title {
+  font-size: 2em;
+  font-weight: 600;
+  font-family: Minecraft, sans-serif;
+  color: var(--theme-color);
+  word-spacing: 0.5rem;
+  letter-spacing: 0.05rem;
+}
+.content-section-container__server-box-title--padding-right {
+  margin-right: 5em;
+}
+.content-section-container__server-box-description {
+  font-size: 1.35em;
+  font-family: Minecraft, sans-serif;
+  color: var(--text-color);
+  margin-bottom: 0.75em;
+  margin-top: 0.5em;
+}
+.content-section-container__server-box-text {
+  word-wrap: normal;
+  line-height: 1.5em;
+  color: var(--text-color);
+  text-indent: 2em;
+  margin-bottom: 1em;
+  font-size: 1.1em;
+  font-family: "Noto Sans", serif;
+}
+.content-section-container__server-box-text:last-child {
+  margin-bottom: 0;
+}
+
+.rules {
+  color: var(--text-color);
+  font-family: "Noto Sans", sans-serif;
+  padding: 0.5em;
+  padding-top: 0;
+  padding-left: 3em;
+  font-size: 1.3em;
+  --h2-font-size: 1.1em;
+}
+.rules h1 {
+  font-family: Minecraft, sans-serif;
+  color: var(--theme-color);
+  font-size: 1.5em;
+  font-weight: 600;
+  word-spacing: 0.5rem;
+  letter-spacing: 0.05rem;
+  margin-bottom: 0.3em;
+}
+.rules h2 {
+  display: inline;
+  font-family: Minecraft, sans-serif;
+  color: var(--text-color);
+  font-size: var(--h2-font-size);
+  font-weight: 600;
+  word-spacing: 0.5rem;
+  letter-spacing: 0.05rem;
+}
+.rules ol {
+  list-style-type: none;
+  counter-reset: li;
+  padding-left: 0.6em;
+  border-left: 4px solid var(--text-color);
+  margin-left: 1em;
+}
+.rules li {
+  margin-bottom: 0.75em;
+  line-height: 1.5em;
+}
+.rules li:last-child {
+  margin-bottom: 0;
+}
+.rules li:first-child {
+  padding-top: 0.5em;
+}
+.rules li:before {
+  counter-increment: li;
+  content: counters(li, ".") ". ";
+}
+.rules li:has(h2)::before {
+  font-family: Minecraft, sans-serif;
+  color: var(--text-color);
+  font-size: var(--h2-font-size);
+}
+
+body {
+  background-color: var(--bg-color);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+@media screen and (max-width: 800px) {
+  body {
+    overflow-x: hidden;
+    font-size: 0.8em;
+  }
+}
+@media print {
+  body > *:not(main) {
+    display: none !important;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

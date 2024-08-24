@@ -1,0 +1,189 @@
+.content-section-container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+
+    &__title {
+        margin-bottom: 2rem;
+        margin-top: 4rem;
+        font-size: 4rem;
+        font-weight: 600;
+        font-family: Minecraft, sans-serif;
+        color: var(--text-color);
+        word-spacing: 0.5rem;
+        letter-spacing: 0.05rem;
+
+        &--no-top-padding {
+            margin-top: 0;
+        }
+    }
+
+    &__content {
+        @media screen and (max-width: 1000px) {
+            flex-flow: row wrap;
+            font-size: 1em;
+
+
+        }
+
+        @media screen and (max-width: 1200px) {
+            padding: 0;
+        }
+
+
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 5rem;
+
+        font-size: 0.75em;
+
+        padding: 0 100px;
+    }
+
+    &__article {
+        display: flex;
+        flex-flow: column nowrap;
+
+        div {
+            display: flex;
+            flex-flow: row nowrap;
+
+            gap: 1em;
+        }
+
+        :nth-child(even) {
+            flex-flow: row-reverse nowrap;
+        }
+
+
+        align-items: center;
+
+
+        max-width: 70%;
+    }
+
+    &__article-text-container {
+        display: flex;
+        flex-flow: column nowrap !important;
+
+        justify-content: center;
+        align-items: start;
+
+        margin-left: 2em;
+    }
+
+    &__article-image {
+        width: auto;
+        height: 20em;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        image-rendering: pixelated;
+
+        mask: url("/static/images/mask43.png") luminance no-repeat center;
+        -webkit-mask: url("/static/images/mask43.png") luminance no-repeat center;
+
+        mask-size: cover;
+        -webkit-mask-size: cover;
+    }
+
+    &__article-title {
+        font-size: 1.65em;
+        font-weight: 600;
+        font-family: Minecraft, sans-serif;
+        color: var(--theme-color);
+        word-spacing: 0.5rem;
+        letter-spacing: 0.05rem;
+
+        margin-bottom: 0.85em;
+
+    }
+
+    &__article-text {
+        max-width: 600px;
+        font-size: 1.35em;
+        font-family: "Noto Sans", sans-serif;
+        color: var(--text-color);
+
+        line-height: 1.35em;
+
+        margin-bottom: .5em;
+    }
+
+    &__server-box {
+        position: relative;
+        border: var(--theme-color) 4px solid;
+        padding: 1rem;
+        margin-top: 2em;
+        max-width: 70%;
+
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: start;
+        gap: 2em;
+
+        canvas {
+            width: 35%;
+            aspect-ratio: 1;
+            align-self: center;
+        }
+    }
+
+    &__server-box-article {
+        hr {
+            //margin-top: .5em;
+            margin-bottom: .5em;
+
+            background-color: var(--theme-color);
+
+            //width: 100%;
+            height: 3px;
+            margin-right: 12rem;
+
+        }
+
+
+    }
+
+    &__server-box-title {
+        font-size: 2em;
+        font-weight: 600;
+        font-family: Minecraft, sans-serif;
+        color: var(--theme-color);
+        word-spacing: 0.5rem;
+        letter-spacing: 0.05rem;
+
+
+        &--padding-right {
+            margin-right: 5em;
+        }
+    }
+
+    &__server-box-description {
+        font-size: 1.35em;
+        font-family: Minecraft, sans-serif;
+        color: var(--text-color);
+        margin-bottom: .75em;
+        margin-top: 0.5em;
+    }
+
+    &__server-box-text {
+        word-wrap: normal;
+        //max-width: 50%;
+
+        line-height: 1.5em;
+        color: var(--text-color);
+        text-indent: 2em;
+
+        margin-bottom: 1em;
+        font-size: 1.1em;
+        font-family: "Noto Sans", serif;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

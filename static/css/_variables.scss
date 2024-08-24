@@ -1,0 +1,38 @@
+:root {
+    --bg-color: #111111;
+    --theme-color: #9A4DFF;
+    --shadow-color: #2B1D3B;
+    --text-color: #FFFFFF;
+    --copyright-color: rgb(75 85 99 / 1);;
+    --link-color: var(--theme-color);
+    --button-color: var(--theme-color);
+    --button-text-color: var(--text-color);
+    --button-border-color: #432959;
+
+    @media print {
+        --bg-color: white;
+        --text-color: black;
+    }
+
+    @font-face {
+        font-family: 'Agat';
+        src: url('/static/fonts/agat-8.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Over';
+        src: url('/static/fonts/Font Over.otf') format('opentype');
+    }
+
+    @font-face {
+        font-family: 'Noto Sans';
+        src: url('/static/fonts/NotoSans-VariableFont_wdth,wght.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Minecraft';
+        src: url('/static/fonts/Minecraft Seven_2.ttf') format('truetype');
+    }
+
+}
+

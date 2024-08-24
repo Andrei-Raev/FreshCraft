@@ -1,0 +1,53 @@
+.button {
+    font-family: 'Noto Sans', serif;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-transform: uppercase;
+
+    background-color: var(--theme-color);
+    color: var(--text-color);
+    border-bottom: var(--button-border-color) 10px solid;
+    position: relative;
+    top: 0;
+    padding: .6rem 1.1rem;
+    cursor: pointer;
+
+    transition: all 0.05s linear;
+    margin-top: 0;
+
+    &:hover {
+        border-bottom: var(--button-border-color) 5px solid;
+        top: 5px;
+        //margin-top: 5px;
+    }
+
+    &--big {
+        font-size: 2em;
+        //padding: 1rem 1.3rem;
+    }
+
+    &--gap-before {
+        margin-top: 3rem;
+
+        &:hover {
+            margin-top: calc(3rem + 5px);
+
+        }
+    }
+
+    &--gap-after {
+        margin-bottom: 3rem;
+    }
+
+    &--top-right {
+        position: absolute;
+        top: 1.75rem;
+        right: .75rem;
+
+        &:hover {
+            top: calc(1.75rem + 5px);
+        }
+
+    }
+
+}

@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}Главная{% endblock %}
+
+{% block head %}
+    {#    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">#}
+{% endblock %}
+
+{% block content %}
+    <article>
+        <section class="full-screen full-screen--move-up" style="background-image: url('/static/images/bg/image_21.jpg');">
+            <div class="full-screen__container">
+                <div class="full-screen__content">
+                    <h2>Добро пожаловать на официальный сайт FRESHCRAFT</h2>
+                    <p>Уникальный проект, новое слово в тематике модпаков майнкрафт — раскрой потенциал великой игры с
+                        проектом FreshCraft.</p>
+                    <p>Освежи впечатление от выживания и получи незабываемые ощущения от игрового процесса!</p>
+                    <button class="button button--big button--gap-before">Играть!</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <img src="/static/images/fresh_classic.jpeg" class="content-section__image" alt="">
+            <div class="content-section__text">
+                <h2 class="content-section__title">FreshCraft Classic</h2>
+
+                <p>FreshCraft Classic — уникальная сборка модов, преобразующая стандартный Minecraft в захватывающее
+                    приключение.</p>
+                <p>Насладитесь улучшенными возможностями ванильного выживания, открывайте новые места и
+                    испытайте все прелести обновленного игрового процесса.</p>
+                <p style="margin-bottom: 0">Основной упор сделан на изучение мира.</p>
+
+                <button class="button button--big button--gap-before">Подробнее о сборке</button>
+            </div>
+        </section>
+
+        <section class="content-section-container">
+            <h2 class="content-section-container__title">DLC</h2>
+
+            <div class="content-section-container__content">
+                <section class="content-section content-section--in-container">
+                    <img src="/static/images/fresh_industrial.jpeg" class="content-section__image" alt="">
+                    <div class="content-section__text">
+                        <h2 class="content-section__title">FreshCraft Industrial</h2>
+
+                        <p>Погрузитесь в мир высоких технологий и промышленного производства с FreshCraft
+                            Industrial!</p>
+                        <p>Создавайте заводы, разрабатывайте сложные механизмы и конструкции, покоряйте вершины
+                            энергетики и металлургии. Эта сборка DLC подарит вам незабываемый опыт.</p>
+
+                        <button class="button button--big">Подробнее о сборке</button>
+                    </div>
+                </section>
+
+                <section class="content-section content-section--in-container">
+                    <img src="/static/images/fresh_fantasy.jpeg" class="content-section__image" alt="">
+                    <div class="content-section__text">
+                        <h2 class="content-section__title">FreshCraft Fantasy</h2>
+
+                        <p>Окунитесь в мир мифов и легенд с FreshCraft Fantasy!</p>
+                        <p>Вас ждут магические существа, могучие боссы, мистические заклинания и неизведанные измерения.
+                            Познакомьтесь со вселенной, полной чудес и приключений, благодаря этой удивительной
+                            сборке. </p>
+
+                        <button class="button button--big">Подробнее о сборке</button>
+                    </div>
+                </section>
+
+            </div>
+        </section>
+
+        {% if news %}
+            {% for news_item in news %}
+                <section class="content-section-container">
+                    <h2 class="content-section-container__title">{{ news_item.title }}</h2>
+
+                    <article class="content-section-container__article">
+                        {% for article in news_item.content %}
+                            <div class="content-section-container__article-container">
+                                <img src="{{ article.image }}" class="content-section-container__article-image"
+                                     alt="{{ article.title }}">
+                                <div class="content-section-container__article-text-container">
+                                    <h3 class="content-section-container__article-title">{{ article.title }}</h3>
+                                    <p class="content-section-container__article-text">{{ article.text | replace("\n", '</p><p class="content-section-container__article-text">') | safe }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </article>
+                {% if news_item.button %}
+                    <button class="button button--big button--gap-before button--gap-after" onclick="location.href='{{ news_item.button.url }}'">{{ news_item.button.title }}</button>
+                {% endif %}
+                </section>
+            {% endfor %}
+        {% endif %}
+    </article>
+{% endblock %}
