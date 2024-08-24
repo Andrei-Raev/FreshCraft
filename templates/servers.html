@@ -3,7 +3,29 @@
 {% block title %}Сервера{% endblock %}
 
 {% block head %}
+    <!-- Preload for models -->
+    <link rel="preload" href="/static/models/flutter/flutter.gltf" as="fetch" type="model/gltf+json"
+          crossorigin="anonymous">
+    <link rel="preload" href="/static/models/flutter/flutter.bin" as="fetch" type="application/octet-stream"
+          crossorigin="anonymous">
     {#    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">#}
+    <!-- Preload for scripts in static/js/tree_js -->
+    <link rel="preload" href="/static/js/tree_js/ColorCorrectionShader.js" as="script" crossorigin="anonymous">
+    <link rel="preload" href="/static/js/tree_js/UnrealBloomPass.js" as="script" crossorigin="anonymous">
+    <link rel="preload" href="/static/js/tree_js/LuminosityHighPassShader.js" as="script" crossorigin="anonymous">
+    <link rel="preload" href="/static/js/tree_js/FXAAShader.js" as="script" crossorigin="anonymous">
+    <link rel="preload" href="/static/js/tree_js/CopyShader.js" as="script" crossorigin="anonymous">
+    <link rel="preload" href="/static/js/tree_js/ShaderPass.js" as="script" crossorigin="anonymous">
+    <link rel="preload" href="/static/js/tree_js/MaskPass.js" as="script" crossorigin="anonymous">
+    <link rel="preload" href="/static/js/tree_js/three.module.min.js" as="script" crossorigin="anonymous">
+    <link rel="preload" href="/static/js/tree_js/RenderPass.js" as="script" crossorigin="anonymous">
+    <link rel="preload" href="/static/js/tree_js/BufferGeometryUtils.js" as="script" crossorigin="anonymous">
+
+    <!-- Preload for scripts in static/js -->
+    <link rel="preload" href="/static/js/test.js" as="script" crossorigin="anonymous">
+
+
+
 {% endblock %}
 
 {% block content %}
@@ -21,7 +43,8 @@
                     FreshCraft Revived</h3>
                 <p class="content-section-container__server-box-description">Приватный сервер #1</p>
                 <hr>
-                <p class="content-section-container__server-box-text">Сервер с лучшими модами. Уникальное сочетание упрощённого Роле-плей и Анархии. Особенное комьюнити,
+                <p class="content-section-container__server-box-text">Сервер с лучшими модами. Уникальное сочетание
+                    упрощённого Роле-плей и Анархии. Особенное комьюнити,
                     необычная и чарующая атмосфера, отсутствие лишнего, доната и привата. Это не просто сервер, это
                     новый взгляд на игру! Вместо авто-ферм, занимайтесь добыванием ресурсов, лутайте данжи и отбивайтесь
                     от мобов!</p>

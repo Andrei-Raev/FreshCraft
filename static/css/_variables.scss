@@ -14,25 +14,17 @@
         --text-color: black;
     }
 
-    @font-face {
-        font-family: 'Agat';
-        src: url('/static/fonts/agat-8.ttf') format('truetype');
-    }
 
-    @font-face {
-        font-family: 'Over';
-        src: url('/static/fonts/Font Over.otf') format('opentype');
-    }
 
-    @font-face {
-        font-family: 'Noto Sans';
-        src: url('/static/fonts/NotoSans-VariableFont_wdth,wght.ttf') format('truetype');
-    }
-
-    @font-face {
-        font-family: 'Minecraft';
-        src: url('/static/fonts/Minecraft Seven_2.ttf') format('truetype');
-    }
 
 }
 
+@font-face {
+    font-family: 'Noto Sans';
+    src: url('/static/fonts/NotoSans.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Minecraft';
+    src: url('/static/fonts/Minecraft_Seven.woff2') format('woff2');
+}

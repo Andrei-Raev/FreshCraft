@@ -91,23 +91,15 @@ h1, h2, h3, h4, h5, h6 {
     --text-color: black;
   }
 }
-@font-face {
-  font-family: "Agat";
-  src: url("/static/fonts/agat-8.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Over";
-  src: url("/static/fonts/Font Over.otf") format("opentype");
-}
+
 @font-face {
   font-family: "Noto Sans";
-  src: url("/static/fonts/NotoSans-VariableFont_wdth,wght.ttf") format("truetype");
+  src: url("/static/fonts/NotoSans.woff2") format("woff2");
 }
 @font-face {
   font-family: "Minecraft";
-  src: url("/static/fonts/Minecraft Seven_2.ttf") format("truetype");
+  src: url("/static/fonts/Minecraft_Seven.woff2") format("woff2");
 }
-
 .header {
   position: sticky;
   top: 0;
@@ -215,10 +207,13 @@ h1, h2, h3, h4, h5, h6 {
   content: "";
   position: absolute;
   width: 100%;
-  height: 2px; /* Толщина подчеркивания */
-  bottom: -2px; /* Положение подчеркивания */
+  height: 2px;
+  /* Толщина подчеркивания */
+  bottom: -2px;
+  /* Положение подчеркивания */
   left: 0;
-  background-color: var(--theme-color); /* Цвет подчеркивания */
+  background-color: var(--theme-color);
+  /* Цвет подчеркивания */
   visibility: hidden;
   transform: scaleX(0);
   transition: all 0.3s ease-in-out;
