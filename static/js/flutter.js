@@ -1,23 +1,42 @@
+console.log('Hello, World!');
 import * as THREE from '/static/js/tree_js/three.module.min.js';
-import {GLTFLoader} from '/static/js/tree_js/GLTFLoader.js';
 
+import {GLTFLoader} from '/static/js/tree_js/GLTFLoader.js';
 import {EffectComposer} from '/static/js/tree_js/EffectComposer.js';
 import {RenderPass} from '/static/js/tree_js/RenderPass.js';
 import {ShaderPass} from '/static/js/tree_js/ShaderPass.js';
 import {FXAAShader} from '/static/js/tree_js/FXAAShader.js';
-import {CopyShader} from "/static/js/tree_js/CopyShader.js";
-import {LuminosityHighPassShader} from "./tree_js/LuminosityHighPassShader.js";
+
 import {UnrealBloomPass} from '/static/js/tree_js/UnrealBloomPass.js';
-import {ColorCorrectionShader} from '/static/js/tree_js/ColorCorrectionShader.js';
+
+THREE.Cache.enabled = true;
 
 // Создание сцены
 const flutter_scene = new THREE.Scene();
-const flutter_size = [Number(document.querySelector('.mascot').offsetWidth), Number(document.querySelector('.mascot').offsetHeight)];
+const flutter_size = [300, 300] //[Number(document.querySelector('.mascot').offsetWidth), Number(document.querySelector('.mascot').offsetHeight)];
+const new_canv = document.createElement('canvas'); // new element('canvas').style.width = '300px';
+new_canv.width = flutter_size[0];
+new_canv.height = flutter_size[1];
 const flutter_renderer = new THREE.WebGLRenderer({
-    canvas: document.querySelector('.mascot'),
+    canvas: new_canv,
     alpha: true,
     antialias: true
 });
+
+let element = document.querySelector('.mascot');
+if (element) {
+    element.addEventListener('model_rendered', function () {
+        element.firstChild.remove();
+        element.appendChild(new_canv);
+    });
+
+
+} else {
+    document.body.appendChild(new_canv);
+    console.error('no element');
+}
+
+// Настройка рендера
 flutter_renderer.setSize(flutter_size[0], flutter_size[1]);
 flutter_renderer.setPixelRatio(window.devicePixelRatio);
 flutter_renderer.shadowMap.enabled = true;
@@ -31,12 +50,6 @@ flutter_renderer.setClearColor(0x111111, 0.085);
 const flutter_ambientLight = new THREE.AmbientLight(0xffffff); // Общий свет
 flutter_scene.add(flutter_ambientLight);
 
-// Создание камеры
-// const camera = new THREE.PerspectiveCamera(75, size[0] / size[1], 0.1, 1000);
-
-// camera.position.z = 5;
-// Создание рендера
-// Добавление света
 
 const directionalLight = new THREE.DirectionalLight(0x9999ff, 5); // Направленный свет
 directionalLight.position.set(1, .83, -.38).normalize();
@@ -53,27 +66,27 @@ flutter_scene.add(directionalLight);
 // scene.add(directionalLight3);
 
 
-function setMaterialTransparent(object) {
-    if (object.material) {
-        if (Array.isArray(object.material)) {
-            object.material.forEach((material) => {
-                if (material.map && material.map.format === THREE.RGBAFormat) {
-                    material.transparent = true;
-                }
-            });
-        } else {
-            if (object.material.map && object.material.map.format === THREE.RGBAFormat) {
-                object.material.transparent = true;
-            }
-        }
-    }
-
-    if (object.children) {
-        object.children.forEach((child) => {
-            setMaterialTransparent(child);
-        });
-    }
-}
+// function setMaterialTransparent(object) {
+//     if (object.material) {
+//         if (Array.isArray(object.material)) {
+//             object.material.forEach((material) => {
+//                 if (material.map && material.map.format === THREE.RGBAFormat) {
+//                     material.transparent = true;
+//                 }
+//             });
+//         } else {
+//             if (object.material.map && object.material.map.format === THREE.RGBAFormat) {
+//                 object.material.transparent = true;
+//             }
+//         }
+//     }
+//
+//     if (object.children) {
+//         object.children.forEach((child) => {
+//             setMaterialTransparent(child);
+//         });
+//     }
+// }
 
 // const composer = new EffectComposer(flutter_renderer);
 // let renderPass;
@@ -123,11 +136,6 @@ flutter_loader.load('/static/models/flutter/flutter.gltf', (gltf) => {
         //         console.log(child);
         //     }
         // }
-
-
-        // scene.add(meshGroup);
-
-        // scene.add(meshGroup);
         const flutter_camera = gltf.cameras[0];
 
 
@@ -141,27 +149,12 @@ flutter_loader.load('/static/models/flutter/flutter.gltf', (gltf) => {
         // Настройка камеры
         flutter_camera.updateProjectionMatrix();
 
-        // const lerp = (start, end, factor) => {
-        //     return start + (end - start) * factor;
-        // };
-
-
         const composer = new EffectComposer(flutter_renderer);
         composer.addPass(new RenderPass(flutter_scene, flutter_camera));
 
         const effectFXAA = new ShaderPass(FXAAShader);
         effectFXAA.uniforms['resolution'].value.set(1 / window.innerWidth * 2, 1 / window.innerHeight * 2);
         composer.addPass(effectFXAA);
-
-
-        // const copyShader = new ShaderPass(CopyShader);
-        // copyShader.renderToScreen = true;
-        //
-        // const highPassFilter = new ShaderPass(LuminosityHighPassShader);
-        // highPassFilter.uniforms['luminosityThreshold'].value = 0.5;
-        // composer.addPass(highPassFilter);
-        //
-        // composer.addPass(copyShader);
 
 
         const unrealBloomPasss = new UnrealBloomPass(
@@ -171,12 +164,6 @@ flutter_loader.load('/static/models/flutter/flutter.gltf', (gltf) => {
             .85 // threshold
         );
         composer.addPass(unrealBloomPasss);
-
-        // const colorCorrectionPass = new ShaderPass(ColorCorrectionShader);
-        // // colorCorrectionPass.uniforms['powRGB'].value.set(1, 1, 1); // Увеличение контрастности
-        // colorCorrectionPass.uniforms['mulRGB'].value.set(1, 1, 1); // Увеличение насыщенности
-        // colorCorrectionPass.renderToScreen = true;
-        // composer.addPass(colorCorrectionPass);
 
 
         mixer = new THREE.AnimationMixer(gltf_scene);
@@ -188,20 +175,6 @@ flutter_loader.load('/static/models/flutter/flutter.gltf', (gltf) => {
 // Анимация (если необходимо)
         const clock = new THREE.Clock();
         const animate = function () {
-            // requestAnimationFrame(animate);
-
-            // Какая-то анимация, если нужно
-            // gltf.scene.rotation.y += 0.01;
-            // meshGroup.rotation.y += 0.002;
-            // if (meshGroup) {
-            //     const targetRotationY = (mouse.x * Math.PI) / 4;
-            //     const targetRotationX = (mouse.y * Math.PI) / 8;
-            //
-            //     // Плавное изменение
-            //     meshGroup.rotation.y = lerp(meshGroup.rotation.y, targetRotationY, 0.1);
-            //     meshGroup.rotation.x = lerp(meshGroup.rotation.x, targetRotationX, 0.1);
-            //
-            // }
 
             requestAnimationFrame(animate);
 
@@ -213,23 +186,9 @@ flutter_loader.load('/static/models/flutter/flutter.gltf', (gltf) => {
         };
 
         animate();
+        element.dispatchEvent(new CustomEvent('model_rendered'));
     },
     undefined, (error) => {
         console.error(error);
     }
-)
-;
-
-// function onMouseMove(event) {
-//     const self_el = document.querySelector('.test');
-//     const rect = self_el.getBoundingClientRect();
-//     const centerX = rect.left + rect.width / 2;
-//     const centerY = rect.top + rect.height / 2;
-//     // console.log(event.clientX - centerX, event.clientY - centerY);
-//     // Преобразуем координаты курсора в нормализованные значения
-//     mouse.x = ((event.clientX - centerX) / window.innerWidth) * 2;
-//     mouse.y = -((event.clientY - centerY) / window.innerHeight) * 2;
-// }
-//
-// // Добавляем слушатель события движения мыши
-// window.addEventListener('mousemove', onMouseMove, false);
+);
