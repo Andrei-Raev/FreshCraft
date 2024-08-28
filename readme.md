@@ -37,8 +37,6 @@ detailed page descriptions and routing. Project features include:
 - ℹ️ Detailed server-specific information and rules
 - 📁 Support for serving static files and favicon
 
-Конечно! Обновленный раздел запуска проекта будет выглядеть так:
-
 ## Запуск проекта / Running the Project
 
 ### Простой запуск без Docker / Simple Run without Docker
