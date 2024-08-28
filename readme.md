@@ -1,6 +1,6 @@
-# 🎨 Обновление дизайна сайта [FreshCraft](https://freshcraft.org/) 🌐
-
 ![Website Design](https://freshcraft.org/assets/images/logos/minecraft_fresh.png)
+
+# 🎨 Обновление дизайна сайта [FreshCraft](https://freshcraft.org/) 🌐
 
 ## 📋 Содержание / Content
 
