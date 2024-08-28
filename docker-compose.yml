@@ -14,5 +14,6 @@ services:
       dockerfile: Dockerfile.nginx
     ports:
       - "443:443"
+      - "80:80"
     depends_on:
       - flask
