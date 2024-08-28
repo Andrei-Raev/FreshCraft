@@ -6,7 +6,9 @@ services:
       context: .
       dockerfile: Dockerfile
     expose:
-      - "8000"
+      - "8000:8000"
+    volumes:
+      - static_data:/static
 
   nginx:
     build:
@@ -17,3 +19,8 @@ services:
       - "80:80"
     depends_on:
       - flask
+    volumes:
+      - static_data:/freshcraft/static
+
+volumes:
+  static_data:
